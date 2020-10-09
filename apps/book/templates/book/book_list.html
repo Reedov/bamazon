@@ -1,0 +1,51 @@
+{%extends 'base.html' %}
+
+{% block content %}
+
+<h1>Книги</h1>
+<ul>
+{% for book in books %}
+	<div>
+	    <strong>{{ book.name }}</strong>
+	    <div>
+	    Автор(авторы):
+
+	    {% for author in book.author.values %}
+	    
+	    	<a href="/author/{{author.id}}">{{ author.name }}</a>
+	    	
+	    {%endfor%}
+
+	    <div>
+
+		
+		<span>Цена: {{book.prize}}</span>	
+	</div>
+	</br>
+{% empty %}
+    <p>No books here.</p>
+{% endfor %}
+</ul>
+
+	<!-- Paginator -->
+	<div >
+	    <span >
+	        {% if books.has_previous %}
+	            <a href="?page={{ books.previous_page_number }}" ><<</a>
+	        {% endif %}
+
+	        <span >
+	            Page {{ books.number }} of {{ books.paginator.num_pages }}.
+	        </span>
+
+	        {% if books.has_next %}
+	            <a href="?page={{ books.next_page_number }}">>></a>
+	        {% endif %}
+	    </span>
+    </div>
+    <!-- End of Paginator -->
+
+
+
+
+{%endblock%}

@@ -1,0 +1,18 @@
+{%extends 'base.html' %}
+
+{% block content %}
+
+
+<h1>{{ book.name }}</h1>
+<p>{{ book.description }}</p>
+	<div>Автор(авторы):
+	{% for author in book.author.values %}
+	<a href="/author/{{author.id}}">{{ author.name }}</a>
+	{%endfor%}
+	</div>
+
+<p>{{ book.prize }}</p>
+
+
+
+{%endblock%}

@@ -1,0 +1,16 @@
+{%extends 'base.html' %}
+
+
+{% block content %}
+
+<h1>{{ author.name }}</h1>
+
+<p> Книги этого автора: </p>
+{% for book in books %}
+	<div><a  href="/book/{{book.id}}"> {{book.name}} </a></div>
+{%endfor%}
+
+
+
+
+{%endblock%}
